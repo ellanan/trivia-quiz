@@ -19,5 +19,7 @@ export const ButtonAnswers = styled.button`
   background-color: #cec4f0;
   border: none;
   border-radius: 10px;
+  margin: 10px;
   padding: 6px 12px;
+  min-width: 260px;
 `;
