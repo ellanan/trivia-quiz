@@ -1,0 +1,28 @@
+html,
+body,
+#root {
+  height: 100%;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #ece9fa;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  background-color: #665cde;
+  border: none;
+  border-radius: 10px;
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #cec4f0;
+  border-radius: 50%;
+  display: inline-block;
+}
