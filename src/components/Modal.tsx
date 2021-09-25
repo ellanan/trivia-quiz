@@ -1,5 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
+import confetti from 'canvas-confetti';
+import { useEffect } from 'react';
 
 import { Button } from './Buttons';
 
@@ -10,13 +12,17 @@ export const ModalStartGame = () => {
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 100%;
+        width: 100%;
+        bottom: 40px;
+        left: 0;
+        position: fixed;
       `}
     >
       <div
         css={css`
           display: flex;
           flex-direction: column;
-          /* background-color: #c4bbee; */
           background: rgb(236, 233, 250);
           background: radial-gradient(
             circle,
@@ -38,12 +44,33 @@ export const ModalStartGame = () => {
 };
 
 export const ModalEndGame = () => {
+  useEffect(() => {
+    confetti({
+      particleCount: 90,
+      spread: 120,
+      colors: [
+        '#41d9d3',
+        '#ffc18f',
+        '#798FBB',
+        '#B0BEF7',
+        '#DEE2E7',
+        '#7A92F0',
+        '#B4C3DB',
+      ],
+    });
+  }, []);
+
   return (
     <div
       css={css`
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 100%;
+        width: 100%;
+        bottom: 40px;
+        left: 0;
+        position: fixed;
       `}
     >
       <div

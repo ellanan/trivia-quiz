@@ -1,11 +1,11 @@
-export type Question = {
+export type QuizDataFormat = {
   questionID: string;
   question: string;
   possibleAnswers: string[];
   correctAnswer: string;
 };
 
-export const questions = [
+export const quizData = [
   {
     questionID: 'q01',
     question: 'What is the rarest M&M color?',
