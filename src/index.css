@@ -1,6 +1,8 @@
 html,
 body {
   overscroll-behavior-y: none;
+  margin: 0;
+  padding: 0;
 }
 
 html,
@@ -12,19 +14,16 @@ body,
 
 body {
   background-color: #ece9fa;
-  /* overflow: hidden; */
+  background-image: url(./images/mainPageBackground.svg);
+  background-size: cover;
 }
 
 a {
   text-decoration: none;
 }
 
-.hideQuestionCard {
-  opacity: 0;
-  z-index: -1;
-}
-
-.showQuestionCard {
-  opacity: 1;
-  z-index: 999;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
