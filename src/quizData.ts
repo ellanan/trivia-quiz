@@ -69,6 +69,6 @@ export const quizData = [
     questionID: 'q10',
     question: 'The hit US comedy "Friends" had how many seasons?',
     possibleAnswers: ['12', '10', '8', '4'],
-    correctAnswer: '',
+    correctAnswer: '10',
   },
 ];

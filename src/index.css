@@ -12,9 +12,19 @@ body,
 
 body {
   background-color: #ece9fa;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 a {
   text-decoration: none;
+}
+
+.hideQuestionCard {
+  opacity: 0;
+  z-index: -1;
+}
+
+.showQuestionCard {
+  opacity: 1;
+  z-index: 999;
 }

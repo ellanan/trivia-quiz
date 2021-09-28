@@ -4,8 +4,11 @@ import confetti from 'canvas-confetti';
 import { useEffect } from 'react';
 
 import { Button } from './Buttons';
+import { useQuizContext } from '../UseQuizContext';
 
-export const ModalStartGame = () => {
+export const StartGameModal = (props: any) => {
+  const { startQuizHandler } = useQuizContext();
+
   return (
     <div
       css={css`
@@ -37,13 +40,15 @@ export const ModalStartGame = () => {
         `}
       >
         <h1>TriviaQuiz</h1>
-        <Button>Start Quiz</Button>
+        <Button onClick={startQuizHandler}>Start Quiz</Button>
       </div>
     </div>
   );
 };
 
-export const ModalEndGame = () => {
+export const EndGameModal = () => {
+  const { closeHandler, totalScore, totalQuestions } = useQuizContext();
+
   useEffect(() => {
     confetti({
       particleCount: 90,
@@ -77,7 +82,6 @@ export const ModalEndGame = () => {
         css={css`
           display: flex;
           flex-direction: column;
-          /* background-color: #c4bbee; */
           background: rgb(236, 233, 250);
           background: linear-gradient(
             180deg,
@@ -93,9 +97,11 @@ export const ModalEndGame = () => {
         `}
       >
         <h1>Congratulations</h1>
-        <h3>Score: 0/0</h3>
+        <h3>
+          You answered: {totalScore} / {totalQuestions} correctly.
+        </h3>
         <p>Hope you learned something new!</p>
-        <Button>Close</Button>
+        <Button onClick={closeHandler}>Play again</Button>
       </div>
     </div>
   );

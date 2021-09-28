@@ -1,35 +1,58 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/css';
-
-import { questions } from '../questions';
+import { QuizDataFormat } from '../quizData';
 import { Button, ButtonAnswers } from './Buttons';
+import { useQuizContext } from '../UseQuizContext';
 
-export const QuestionCard = () => {
+export type Props = QuizDataFormat & {
+  totalScore: number;
+  totalQuestions: number;
+  callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+export const QuestionCard: React.FC<Props> = ({
+  question,
+  possibleAnswers,
+  totalScore,
+  callback,
+}) => {
+  const {
+    nextQuestionHandler,
+    isButtonDisabled,
+    questionNumber,
+    totalQuestions,
+  } = useQuizContext();
+
   return (
-    <div>
-      <p>Score: 0</p>
-      {questions.map((Question) => {
-        return (
-          <div key={Question.question}>
-            <p>{Question.question}</p>
-            {Question.possibleAnswers.map((possibleAnswer) => {
-              return (
-                <ButtonAnswers
-                  key={possibleAnswer}
-                  css={css`
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                  `}
-                >
-                  {possibleAnswer}
-                </ButtonAnswers>
-              );
-            })}
-          </div>
-        );
-      })}
-      <Button>Next Question</Button>
+    <div
+      className={
+        totalQuestions - 1 === questionNumber && isButtonDisabled
+          ? `hideQuestionCard`
+          : `showQuestionCard`
+      }
+    >
+      <p>
+        Score: {totalScore} / {questionNumber + 1}
+      </p>
+      <p dangerouslySetInnerHTML={{ __html: question }} />
+      <div>
+        {possibleAnswers.map((possibleAnswer) => {
+          return (
+            <ButtonAnswers
+              key={possibleAnswer}
+              value={possibleAnswer}
+              onClick={callback}
+              disabled={isButtonDisabled}
+            >
+              <span dangerouslySetInnerHTML={{ __html: possibleAnswer }} />
+            </ButtonAnswers>
+          );
+        })}
+      </div>
+      <Button
+        onClick={nextQuestionHandler}
+        disabled={questionNumber === totalQuestions - 1 ? true : false}
+      >
+        Next Question
+      </Button>
     </div>
   );
 };

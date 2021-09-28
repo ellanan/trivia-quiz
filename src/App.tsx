@@ -1,59 +1,41 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import React, { useState } from 'react';
+import { QuestionCard } from './components/QuestionCard';
+import { StartGameModal, EndGameModal } from './components/Modal';
+import { Footer } from './components/Footer';
+import { quizData } from './quizData';
+import { useQuizContext } from './UseQuizContext';
 
-import { questions } from './questions';
-
-function App() {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [isCorrect, setIsCorrect] = useState(0);
-  const [startQuiz, setStartQuiz] = useState(false);
-  const [close, setClose] = useState(false);
-
-  const nextQuestionHandler = () => {
-    setCurrentQuestion(currentQuestion + 1);
-  };
-
-  const startQuizHandler = () => {
-    setStartQuiz(true);
-  };
-
-  const closeHandler = () => {
-    setClose(true);
-  };
+const App = () => {
+  const {
+    checkAnswerHandler,
+    startQuiz,
+    questionNumber,
+    totalScore,
+    isGameOverOrNotStarted,
+    totalQuestions,
+    isButtonDisabled,
+  } = useQuizContext();
 
   return (
     <div>
-      <h1>TriviaQuiz</h1>
-      <p>Score: 0</p>
-      <button onClick={startQuizHandler}>Start</button>
-      <button onClick={nextQuestionHandler}>Next Question</button>
-      <button onClick={closeHandler}>Close</button>
+      {!startQuiz ? <StartGameModal /> : null}
+      {!isGameOverOrNotStarted && startQuiz ? (
+        <QuestionCard
+          questionID={quizData[questionNumber].questionID}
+          question={quizData[questionNumber].question}
+          possibleAnswers={quizData[questionNumber].possibleAnswers}
+          correctAnswer={quizData[questionNumber].correctAnswer}
+          totalQuestions={totalQuestions}
+          totalScore={totalScore}
+          callback={checkAnswerHandler}
+        />
+      ) : null}
+      {isButtonDisabled && questionNumber === totalQuestions - 1 ? (
+        <EndGameModal />
+      ) : null}
 
-      {questions.map((Question) => {
-        return (
-          <div key={Question.question}>
-            <p>{Question.question}</p>
-            {Question.possibleAnswers.map((possibleAnswer) => {
-              return (
-                <button
-                  key={possibleAnswer}
-                  css={css`
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    background-color: #bef5ec;
-                  `}
-                >
-                  {possibleAnswer}
-                </button>
-              );
-            })}
-          </div>
-        );
-      })}
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
