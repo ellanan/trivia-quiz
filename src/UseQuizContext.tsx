@@ -32,54 +32,60 @@ const INITIAL_GAME_STATE = {
   currentQuestion: null,
 };
 
+const quizReducer = (currentState: MutableGameState, action: GameAction) => {
+  switch (action.type) {
+    case 'start_game':
+      const questions = _.sampleSize(quizData, 10).map((data) => ({
+        ...data,
+        possibleAnswers: _.shuffle(data.possibleAnswers),
+      }));
+      return {
+        ...INITIAL_GAME_STATE,
+        isStarted: true,
+        currentQuestion: questions[0],
+        questions,
+      };
+
+    case 'submit_answer': {
+      const answers = currentState?.answers.concat(action.selectedAnswer);
+      return {
+        ...currentState,
+        answers,
+      };
+    }
+
+    case 'next_question': {
+      const currentQuestionIndex = currentState.currentQuestion
+        ? currentState.questions.indexOf(currentState.currentQuestion)
+        : 0;
+      if (currentQuestionIndex === currentState.questions.length - 1) {
+        return {
+          ...currentState,
+          currentQuestion: null,
+          isGameOver: true,
+        };
+      }
+      return {
+        ...currentState,
+        currentQuestion: currentState.questions[currentQuestionIndex + 1],
+        selectedAnswer: null,
+      };
+    }
+
+    case 'reset':
+      return INITIAL_GAME_STATE;
+
+    default:
+      console.error(`Unhandled action:`, { action });
+      throw new Error(`Unhandled action`);
+  }
+};
+
+//////////////////////////////////////////////////////////////////////////
+
 const useQuizState = () => {
   const [gameState, dispatchAction] = useReducer(
-    (currentState: MutableGameState, action: GameAction) => {
-      switch (action.type) {
-        case 'start_game':
-          const questions = _.sampleSize(quizData, 10).map((data) => ({
-            ...data,
-            possibleAnswers: _.shuffle(data.possibleAnswers),
-          }));
-          return {
-            ...INITIAL_GAME_STATE,
-            isStarted: true,
-            currentQuestion: questions[0],
-            questions,
-          };
-
-        case 'submit_answer': {
-          const answers = currentState?.answers.concat(action.selectedAnswer);
-          return {
-            ...currentState,
-            answers,
-          };
-        }
-
-        case 'next_question': {
-          const currentQuestionIndex = currentState.currentQuestion
-            ? currentState.questions.indexOf(currentState.currentQuestion)
-            : 0;
-          if (currentQuestionIndex === currentState.questions.length - 1) {
-            return {
-              ...currentState,
-              currentQuestion: null,
-              isGameOver: true,
-            };
-          }
-          return {
-            ...currentState,
-            currentQuestion: currentState.questions[currentQuestionIndex + 1],
-            selectedAnswer: null,
-          };
-        }
-        case 'reset':
-          return INITIAL_GAME_STATE;
-        default:
-          console.error(`Unhandled action:`, { action });
-          throw new Error(`Unhandled action`);
-      }
-    },
+    quizReducer,
     INITIAL_GAME_STATE
   );
 
@@ -116,6 +122,7 @@ export const QuizContextProvider = ({ children }: PropsWithChildren<{}>) => {
 
 export const useQuizContext = () => {
   const context = React.useContext(QuizContext);
+
   if (!context) {
     throw new Error(`useQuizContext must be used within a QuizContext`);
   }
