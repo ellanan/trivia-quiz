@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
+import { StartGameScreen } from './components/StartGameScreen';
 import { QuestionCard } from './components/QuestionCard';
-import { StartGameScreen, EndGameScreen } from './components/StartEndScreens';
+import { EndGameScreen } from './components/EndGameScreen';
 import { Footer } from './components/Footer';
 import { useQuizContext } from './UseQuizContext';
 

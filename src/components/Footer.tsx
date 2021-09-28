@@ -42,7 +42,7 @@ export const Footer = () => {
           padding: 10px;
         `}
       >
-        <GrLinkedin size={18} color='3B67BE' />
+        <GrLinkedin size={18} color='#3B67BE' />
       </a>
     </div>
   );
