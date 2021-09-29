@@ -80,6 +80,8 @@ export const EndGameScreen = () => {
           align-items: center;
           justify-content: center;
           background-image: url(${endGameBackground});
+          background-size: cover;
+          background-repeat: no-repeat;
           width: calc(100% - 3em);
           max-width: 52em;
           height: auto;
@@ -87,26 +89,45 @@ export const EndGameScreen = () => {
           padding: 46px 0;
           color: #fff;
 
-          @media (max-width: 880px) {
-            background-size: cover;
+          @media (max-width: 450px) {
             width: calc(100% - 40px - 0.3em);
             min-width: initial;
             height: auto;
+          }
+
+          @media screen and (orientation: landscape) and (max-width: 830px) {
+            margin-top: 5vh;
+            width: 80vw;
+            height: 20vh;
+            padding: 100px 0px;
           }
         `}
       >
         <h1
           css={css`
             font-size: 3.8em;
+            @media screen and (orientation: landscape) and (max-width: 830px) {
+              margin: 0;
+            }
           `}
         >
           Great job!
         </h1>
         <h3>
-          You answered: {gameState.correctlyAnsweredQuestions.length} /
-          {gameState.questions.length} correctly.
+          {`You answered: ${
+            gameState.correctlyAnsweredQuestions.length
+          } / ${' '}
+          ${gameState.questions.length} correctly.`}
         </h3>
-        <p>Hope you learned something new!</p>
+        <p
+          css={css`
+            @media screen and (orientation: landscape) and (max-width: 420px) {
+              margin: 0;
+            }
+          `}
+        >
+          Hope you learned something new!
+        </p>
         <PlayGameButton onClick={() => dispatchAction({ type: 'reset' })}>
           Play again
         </PlayGameButton>

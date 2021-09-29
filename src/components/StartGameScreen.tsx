@@ -39,11 +39,16 @@ export const StartGameScreen = (props: any) => {
           color: #fff;
           opacity: 0.8;
 
-          @media (max-width: 880px) {
-            background-size: cover;
+          @media (max-width: 450px) {
             width: calc(100% - 30px - 1em);
             min-width: initial;
             height: auto;
+          }
+
+          @media screen and (orientation: landscape) and (max-width: 830px) {
+            margin-top: 5vh;
+            width: 80vw;
+            height: 18vh;
           }
         `}
       >

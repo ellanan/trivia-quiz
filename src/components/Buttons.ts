@@ -13,6 +13,13 @@ export const PossibleAnswerButton = styled.button`
   cursor: pointer;
   color: #4940b6;
   font-weight: 600;
+
+  @media (max-width: 450px) {
+    min-width: 200px;
+  }
+  @media (max-width: 830px) {
+    min-width: 14em;
+  }
 `;
 
 export const NextQuestionButton = styled.button`
@@ -49,7 +56,11 @@ export const PlayGameButton = styled.button`
   font-weight: 600;
   cursor: pointer;
 
-  @media (max-width: 880px) {
+  @media (max-width: 450px) {
+    font-size: 1em;
+  }
+
+  @media (max-width: 830px) {
     font-size: 1em;
   }
 `;
