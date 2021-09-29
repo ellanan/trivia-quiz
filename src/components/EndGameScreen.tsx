@@ -3,8 +3,10 @@ import { css } from '@emotion/react';
 import confetti from 'canvas-confetti';
 import { useEffect } from 'react';
 
-import { Button } from './Buttons';
+import { PlayGameButton } from './Buttons';
 import { useQuizContext } from '../UseQuizContext';
+
+const endGameBackground = require('../images/endGameBackground.svg').default;
 
 export const EndGameScreen = () => {
   const { gameState, dispatchAction } = useQuizContext();
@@ -63,29 +65,34 @@ export const EndGameScreen = () => {
     <div
       css={css`
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         flex-grow: 1;
+        width: 100%;
+        height: 100%;
       `}
     >
       <div
         css={css`
+          margin-top: 15vh;
           display: flex;
           flex-direction: column;
-          background: rgb(236, 233, 250);
-          background: linear-gradient(
-            180deg,
-            rgba(236, 233, 250, 1) 5%,
-            rgba(202, 192, 239, 1) 38%,
-            rgba(111, 102, 223, 0.6895133053221288) 100%
-          );
           align-items: center;
           justify-content: center;
-          height: 28em;
-          width: 50em;
+          background-image: url(${endGameBackground});
+          width: calc(100% - 3em);
+          max-width: 52em;
+          height: auto;
           border-radius: 10px;
-          padding: 18px 0;
-          color: #4940b6;
+          padding: 46px 0;
+          color: #fff;
+
+          @media (max-width: 880px) {
+            background-size: cover;
+            width: calc(100% - 40px - 0.3em);
+            min-width: initial;
+            height: auto;
+          }
         `}
       >
         <h1
@@ -100,9 +107,9 @@ export const EndGameScreen = () => {
           {gameState.questions.length} correctly.
         </h3>
         <p>Hope you learned something new!</p>
-        <Button onClick={() => dispatchAction({ type: 'reset' })}>
+        <PlayGameButton onClick={() => dispatchAction({ type: 'reset' })}>
           Play again
-        </Button>
+        </PlayGameButton>
       </div>
     </div>
   );

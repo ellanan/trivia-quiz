@@ -7,7 +7,6 @@ export const PossibleAnswerButton = styled.button`
   background-color: #cec4f0;
   border: none;
   border-radius: 10px;
-  margin: 10px;
   padding: 0.7em 0;
   min-width: 300px;
   font-size: 1em;
@@ -16,7 +15,7 @@ export const PossibleAnswerButton = styled.button`
   font-weight: 600;
 `;
 
-export const Button = styled.button`
+export const NextQuestionButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,11 +34,11 @@ export const Button = styled.button`
   }
 `;
 
-export const StartButton = styled.button`
+export const PlayGameButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #665cde;
+  background-color: #7d76df;
   border: 3px solid #fff;
   border-radius: 10px;
   margin: 20px;
@@ -49,4 +48,8 @@ export const StartButton = styled.button`
   font-size: 1.2em;
   font-weight: 600;
   cursor: pointer;
+
+  @media (max-width: 880px) {
+    font-size: 1em;
+  }
 `;

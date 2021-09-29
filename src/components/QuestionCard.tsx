@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 
-import { Button, PossibleAnswerButton } from './Buttons';
+import { NextQuestionButton, PossibleAnswerButton } from './Buttons';
 import { useQuizContext } from '../UseQuizContext';
 
 const startBackground = require('../images/questionCardBackground.svg').default;
@@ -21,34 +21,68 @@ export const QuestionCard = () => {
         flex-grow: 1;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         flex-direction: column;
+        width: 100%;
       `}
     >
       <div
         css={css`
+          margin-top: 15vh;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           border-radius: 10px;
-          height: 28em;
-          width: 50em;
+
           background-image: url(${startBackground});
-          padding: 6px 30px;
+          background-size: cover;
+          background-repeat: no-repeat;
+
+          width: calc(100% - 3em);
+          max-width: 52em;
+          padding-top: 2em;
+          padding-bottom: 2em;
+
           color: #fff;
+
+          @media (min-width: 880px) {
+            padding-top: 4em;
+            padding-bottom: 4em;
+          }
         `}
       >
         <p
           css={css`
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
             font-size: 2.4em;
             text-align: center;
             font-weight: 700;
+            margin-top: 0;
+            margin-left: 1em;
+            margin-right: 1em;
+
+            min-height: 2.4em;
+
+            @media (max-width: 880px) {
+              min-height: 3.6em;
+              font-size: 1.4em;
+            }
           `}
         >
           {gameState.currentQuestionIndex + 1}. {currentQuestion.question}
         </p>
-        <div>
+        <div
+          css={css`
+            * + * {
+              margin-top: 10px;
+            }
+          `}
+        >
           {currentQuestion.possibleAnswers.map((possibleAnswer) => {
             return (
               <PossibleAnswerButton
@@ -91,7 +125,12 @@ export const QuestionCard = () => {
         </div>
       </div>
 
-      <Button
+      <NextQuestionButton
+        css={css`
+          @media (min-width: 880px) {
+            margin-top: 4em;
+          }
+        `}
         onClick={() => {
           dispatchAction({
             type: 'next_question',
@@ -99,7 +138,7 @@ export const QuestionCard = () => {
         }}
       >
         Next Question
-      </Button>
+      </NextQuestionButton>
     </div>
   );
 };
