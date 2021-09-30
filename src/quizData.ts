@@ -10,7 +10,6 @@ export const quizData = [
     possibleAnswers: ['Hindi', 'Arabic', 'Chinese', 'Russian'],
     correctAnswer: 'Hindi',
   },
-
   {
     question: 'Which country consumes the most chocolate per capita?',
     possibleAnswers: ['United States', 'Germany', 'Austria', 'Switzerland'],
@@ -55,5 +54,60 @@ export const quizData = [
     question: 'Which of the following is not a Marvel character?',
     possibleAnswers: ['Abraxas', 'Blackheart', 'ZZZAX', 'Black Adam'],
     correctAnswer: 'Black Adam',
+  },
+  {
+    question: 'What country has the most natural lakes?',
+    possibleAnswers: ['Canada', 'USA', 'China', 'Sweden'],
+    correctAnswer: 'Canada',
+  },
+  {
+    question: 'How long do elephant pregnancies last?',
+    possibleAnswers: ['24 months', '12 months', '22 months', ' 17 months'],
+    correctAnswer: '22 months',
+  },
+  {
+    question: 'Which of these is not a peripheral, in computer terms?',
+    possibleAnswers: ['Keyboard', 'Monitor', 'Mouse', 'Motherboard'],
+    correctAnswer: 'Motherboard',
+  },
+  {
+    question: 'One Terabyte (1 TB) is equal to:',
+    possibleAnswers: ['1028 GB', '1012GB', '1000 GB', '1024 GB'],
+    correctAnswer: '1024 GB',
+  },
+  {
+    question: 'What technology is used to record cryptocurrency transactions?',
+    possibleAnswers: ['Blockchain', 'Digital Wallet', 'Mining', 'Token'],
+    correctAnswer: 'Blockchain',
+  },
+  {
+    question: 'Which one is the first web browser invented in 1990?',
+    possibleAnswers: ['Internet Explorer', 'Mosaic', 'Mozilla', 'Nexus'],
+    correctAnswer: 'Nexus',
+  },
+  {
+    question: 'Which of the following is not a database management software?',
+    possibleAnswers: ['MySQL', 'Oracle', 'Sybase', 'COBOL'],
+    correctAnswer: 'COBOL',
+  },
+  {
+    question: 'Who is known as the father of internet',
+    possibleAnswers: [
+      'Alan Perlis',
+      'Jean E. Sammet',
+      'Vint Cerf',
+      'Steve Lawrence',
+    ],
+    correctAnswer: 'Vint Cerf',
+  },
+  {
+    question: 'Which one is the first fully supported 64-bit operating system?',
+    possibleAnswers: ['Windows Vista', 'Mac', 'Linux', 'Windows XP'],
+    correctAnswer: 'Linux',
+  },
+  {
+    question: 'Which one is volatile memory in a computer system?',
+    possibleAnswers: ['HardDisk', 'RAM', 'ROM', 'Optical Drive'],
+    correctAnswer: 'RAM',
   },
 ];
