@@ -45,8 +45,8 @@ export const StartGameScreen = (props: any) => {
             height: auto;
           }
 
-          @media screen and (orientation: landscape) and (max-width: 830px) {
-            margin-top: 5vh;
+          @media (max-height: 600px) {
+            margin-top: 7vh;
             width: 80vw;
             height: 18vh;
           }

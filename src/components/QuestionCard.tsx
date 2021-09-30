@@ -50,8 +50,8 @@ export const QuestionCard = () => {
             padding-bottom: 4em;
           }
 
-          @media screen and (orientation: landscape) and (max-width: 830px) {
-            margin-top: 6vh;
+          @media (max-height: 600px) {
+            margin-top: 7vh;
             width: 80vw;
             height: 0vh;
             padding: 26vh 2vw;
@@ -77,7 +77,7 @@ export const QuestionCard = () => {
               font-size: 1.4em;
             }
 
-            @media screen and (orientation: landscape) and (max-width: 830px) {
+            @media (max-height: 600px) {
               margin: 0;
               min-height: 2.5em;
               font-size: 1.4em;
@@ -88,7 +88,7 @@ export const QuestionCard = () => {
         </p>
         <div
           css={css`
-            @media screen and (orientation: landscape) and (max-width: 830px) {
+            @media (max-height: 600px) {
               display: grid;
               grid-template-columns: 1fr 1fr;
               grid-column-gap: 10px;
@@ -146,7 +146,7 @@ export const QuestionCard = () => {
             margin-top: 1em;
           }
 
-          @media screen and (orientation: landscape) and (max-width: 830px) {
+          @media (max-height: 600px) {
             margin-top: 1em;
           }
         `}

@@ -95,8 +95,8 @@ export const EndGameScreen = () => {
             height: auto;
           }
 
-          @media screen and (orientation: landscape) and (max-width: 830px) {
-            margin-top: 5vh;
+          @media (max-height: 600px) {
+            margin-top: 7vh;
             width: 80vw;
             height: 20vh;
             padding: 100px 0px;
@@ -106,7 +106,7 @@ export const EndGameScreen = () => {
         <h1
           css={css`
             font-size: 3.8em;
-            @media screen and (orientation: landscape) and (max-width: 830px) {
+            @media (max-height: 600px) {
               margin: 0;
             }
           `}
@@ -121,7 +121,7 @@ export const EndGameScreen = () => {
         </h3>
         <p
           css={css`
-            @media screen and (orientation: landscape) and (max-width: 420px) {
+            @media (max-height: 600px) {
               margin: 0;
             }
           `}

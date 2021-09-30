@@ -7,7 +7,9 @@ export const PossibleAnswerButton = styled.button`
   background-color: #cec4f0;
   border: none;
   border-radius: 10px;
-  padding: 0.7em 0;
+  padding: 0.7em 1em;
+  margin-left: auto;
+  margin-right: auto;
   min-width: 300px;
   font-size: 1em;
   cursor: pointer;
