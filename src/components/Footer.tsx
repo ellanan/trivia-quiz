@@ -15,7 +15,7 @@ export const Footer = () => {
       `}
     >
       <a
-        href='https://github.com/ellanan'
+        href='https://github.com/ellanan/trivia-quiz'
         target='_blank'
         rel='noreferrer'
         css={css`
