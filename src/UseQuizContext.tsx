@@ -35,7 +35,7 @@ const INITIAL_GAME_STATE = {
 const quizReducer = (currentState: MutableGameState, action: GameAction) => {
   switch (action.type) {
     case 'start_game':
-      const questions = _.sampleSize(quizData, 5).map((data) => ({
+      const questions = _.sampleSize(quizData, 3).map((data) => ({
         ...data,
         possibleAnswers: _.shuffle(data.possibleAnswers),
       }));
