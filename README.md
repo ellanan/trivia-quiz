@@ -12,23 +12,11 @@ https://trivia.ellanan.com/
 - Instant feedback on users' input
 - Playfully purple palette
 
+![Alt Text](https://github.com/ellanan/trivia-quiz/blob/main/src/images/readme/Screen%20Recording%202022-01-27%20at%2006.08%20PM.gif)
+
 ## Technologies used
 
 - React
 - TypeScript
 - Emotion
 - HTML
-
-## Screenshots
-
-Start Game Screen:
-
-![This is an image](https://github.com/ellanan/trivia-quiz/blob/main/src/images/readme/startGameScreen.png)
-
-Question Card:
-
-![This is an image](https://github.com/ellanan/trivia-quiz/blob/main/src/images/readme/questionCard.png)
-
-End Game Screen:
-
-![This is an image](https://github.com/ellanan/trivia-quiz/blob/main/src/images/readme/endGameScreen.png)
